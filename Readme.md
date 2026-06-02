@@ -1,4 +1,6 @@
-# Functionalities  
+# Overview  
+This is an LLD Implementation of Spotify Music app   
+# Functional Requirements  
 1. Users can play/pause songs  
 2. Users can create playlist, add songs to playlist, Play entire playlist (sequence, random, etc.)  
 3. App should support multiple output devices (Bluetooth Speaker, wired speaker)    
