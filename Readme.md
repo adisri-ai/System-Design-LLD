@@ -141,3 +141,9 @@ Here is the UML Diagram of the project:
 | + closeApp()         |
 +----------------------+
 ```
+# Design Patterns used: 
+Following are the Design patterns used in this project:  
+1. **Factory Design Pattern** : To create an abstraction for playlist creation for the user end.  
+3. **Adapter Design Pattern** : To integrate external devices to the music app
+4. **Singleton Design Pattern** : To maintain only 1 instance of media controller 
+5. **Facade Design Pattern** : To make sure that the user talks only to 1 class which further communicates with the complex subsystem. 
