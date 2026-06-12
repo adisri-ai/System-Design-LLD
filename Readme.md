@@ -143,7 +143,49 @@ Here is the UML Diagram of the project:
 ```
 # Design Patterns used: 
 Following are the Design patterns used in this project:  
-1. **Factory Design Pattern** : To create an abstraction for playlist creation for the user end.  
-3. **Adapter Design Pattern** : To integrate external devices to the music app
-4. **Singleton Design Pattern** : To maintain only 1 instance of media controller 
+1. **Factory Design Pattern** : To create an abstraction for playlist creation for the user end.
+   ```
+   class SpotifyApp {
+
+    List<Playlist> playlists = new ArrayList<>();
+    List<Song> songs = new ArrayList<>();
+
+    MediaOutputInterface mediaInterface;
+
+    public SpotifyApp() {
+        mediaInterface = MediaOutputInterface.getInstance();
+    }
+
+    public void openApp() {
+        System.out.println("App opened");
+    }
+
+    public void playPlaylist(Playlist playlist) {
+        playlist.startPlaylist();
+    }
+
+    public void playSong(Song song) {
+        MediaPlayer player = MediaPlayer.getInstance();
+        player.currentSong = song;
+        player.play();
+
+        mediaInterface.sendAudio();
+    }
+
+    public void play() {
+        MediaPlayer.getInstance().play();
+    }
+
+    public void pause() {
+        MediaPlayer.getInstance().pause();
+    }
+
+    public void closeApp() {
+        System.out.println("Closing App");
+    }
+}
+
+   ```
+2. **Adapter Design Pattern** : To integrate external devices to the music app
+3. **Singleton Design Pattern** : To maintain only 1 instance of media controller 
 5. **Facade Design Pattern** : To make sure that the user talks only to 1 class which further communicates with the complex subsystem. 
