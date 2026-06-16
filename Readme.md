@@ -186,5 +186,38 @@ Following are the Design patterns used in this project:
    }
  
 2. **Adapter Design Pattern** : To integrate external devices to the music app
-3. **Singleton Design Pattern** : To maintain only 1 instance of media controller 
-4. **Factory Design Pattern** : To encapsualte the creation of new songs/playlists
+   ```
+             // Adapter Design-pattern
+          interface OutputDeviceAdapter {
+              void play(Song song);
+          }
+
+          class BluetoothAdapter implements OutputDeviceAdapter {
+          
+              private BluetoothDevice bluetoothDevice;
+          
+              public BluetoothAdapter(BluetoothDevice bluetoothDevice) {
+                  this.bluetoothDevice = bluetoothDevice;
+              }
+          
+              @Override
+              public void play(Song song) {
+                  bluetoothDevice.playAudio(song);
+              }
+          }
+
+          class WirelessAdapter implements OutputDeviceAdapter {
+          
+              private WirelessDevice wirelessDevice;
+          
+              public WirelessAdapter(WirelessDevice wirelessDevice) {
+                  this.wirelessDevice = wirelessDevice;
+              }
+          
+              @Override
+              public void play(Song song) {
+                  wirelessDevice.playAudio(song);
+              }
+          }
+4. **Singleton Design Pattern** : To maintain only 1 instance of media controller 
+5. **Factory Design Pattern** : To encapsualte the creation of new songs/playlists
