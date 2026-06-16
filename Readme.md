@@ -253,3 +253,25 @@ Following are the Design patterns used in this project:
    }
              
 4. **Factory Design Pattern** : To encapsualte the creation of new songs/playlists
+   ```
+          // Factory Design-pattern for adapters
+          interface AdapterFactory {
+              OutputDeviceAdapter createAdapter();
+          }
+          
+          class BluetoothAdapterFactory implements AdapterFactory {
+          
+              @Override
+              public OutputDeviceAdapter createAdapter() {
+                  return new BluetoothAdapter(new BluetoothDevice());
+              }
+          }
+          
+          class WirelessAdapterFactory implements AdapterFactory {
+          
+              @Override
+              public OutputDeviceAdapter createAdapter() {
+                  return new WirelessAdapter(new WirelessDevice());
+              }
+          }
+
