@@ -219,5 +219,37 @@ Following are the Design patterns used in this project:
                   wirelessDevice.playAudio(song);
               }
           }
-4. **Singleton Design Pattern** : To maintain only 1 instance of media controller 
-5. **Factory Design Pattern** : To encapsualte the creation of new songs/playlists
+3. **Singleton Design Pattern** : To maintain only 1 instance of media controller
+   ```
+   class MediaOutputInterface {
+
+    private static MediaOutputInterface instance;
+
+    MediaPlayer player;
+    OutputDeviceAdapter target;
+
+    private MediaOutputInterface() {
+        player = MediaPlayer.getInstance();
+    }
+
+    public static MediaOutputInterface getInstance() {
+        if (instance == null) {
+            instance = new MediaOutputInterface();
+        }
+        return instance;
+    }
+
+    public void setOutputDevice(OutputDeviceAdapter target) {
+        this.target = target;
+    }
+
+    public void sendAudio() {
+        if (player.currentSong != null && target != null) {
+            target.play(player.currentSong);
+        } else {
+            System.out.println("No output device/song available");
+        }
+    }
+   }
+             
+4. **Factory Design Pattern** : To encapsualte the creation of new songs/playlists
